@@ -52,6 +52,7 @@
 /terminal/
 /timeman/
 /upload/
+/vendor/
 /workgroups/
 .access.php
 .bottom.menu.php
