@@ -23,12 +23,12 @@ class Log extends FileExceptionHandlerLog
      *
      * @return void
      */
-    public static function addLog($message, bool $clear = false, string $fileName = 'custom', $timeVersion = true): void
+    public static function addLog($message, bool $clear = false, string $fileName = 'log', $timeVersion = true): void
     {
         $logFile = $_SERVER["DOCUMENT_ROOT"] . '/local/logs/' . $fileName;
 
         if ($timeVersion) {
-            $logFile .= '_' . date("d.m.Y");
+            $logFile .= '_' . 'custom';
         }
         $logFile .= '.log';
 
@@ -63,9 +63,20 @@ class Log extends FileExceptionHandlerLog
      *
      * @return void
      */
-    // public function write($exception, $logType): void
-    // {
-    // }
+    public function write($exception, $logType): void
+    {
+		$text = ExceptionHandlerFormatter::format($exception, false, $this->level);
+
+		$context = [
+			'type' => static::logTypeToString($logType),
+		];
+
+		$logLevel = static::logTypeToLevel($logType);
+// Переопределил формирование сообщение - добавил OTUS вместо {date}
+		$message = "OTUS - Host: {host} - {type} - {$text}\n";
+
+		$this->logger->log($logLevel, $message, $context);
+    }
 
 }
 

@@ -82,3 +82,5 @@
 /online/
 /vibe/
 /vote-result/
+
+*.log

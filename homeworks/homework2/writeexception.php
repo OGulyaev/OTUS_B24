@@ -8,6 +8,7 @@ $APPLICATION->SetTitle("Ошибка для exeption");
 </ul>
 <?
 // ошибка для exeption
+$h = 1/0;
 
 ?>
 
