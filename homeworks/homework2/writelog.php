@@ -15,7 +15,7 @@ $APPLICATION->SetTitle("Добавление в лог");
 /* 1. Использовал имеющийся в примере класс Log и функцию addLog для записи сообщения в файл лога 
    2. в функции addLog исправил адрес создаваемого файла лога на log_custom.log (как на странице ДЗ) */
 
-\App\Debug\Log::addLog('Открыта страница writelog.php');
+\App\Debug\Log::addLog('Page writelog.php is open');
 
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); 
 ?>
