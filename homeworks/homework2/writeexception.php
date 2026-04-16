@@ -1,5 +1,8 @@
-<? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
+<?php
+require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
+
 $APPLICATION->SetTitle("Ошибка для exeption");
+
 ?>
 <ul class="list-group">
     <li class="list-group-item">
@@ -10,6 +13,5 @@ $APPLICATION->SetTitle("Ошибка для exeption");
 // ошибка для exeption
 $h = 1/0;
 
+require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); 
 ?>
-
-<? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
