@@ -7,7 +7,7 @@ $APPLICATION->SetTitle("Добавление в лог");
     <ul class="list-group">
         <li class="list-group-item">
             <a href="/local/logs/log_<?= date("d.m.Y") ?>.log">Файл лога</a>,
-            в лог добавленно 'Открыта страница writelog.php'
+            в лог добавленно 'Page writelog.php is open'
         </li>
     </ul>
 <?
