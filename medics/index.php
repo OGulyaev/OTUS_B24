@@ -1,33 +1,24 @@
 <?php
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 
-$APPLICATION->SetTitle('Работа с API инфоблоков');
+$APPLICATION->SetTitle('Врачи');
+$APPLICATION->ShowTitle();
 
-use Bitrix\Main\Loader;
-use Bitrix\Iblock\Iblock;
-use Models\Lists\CarsPropertyValuesTable as CarsTable;
-Loader::includeModule('iblock');
+\Bitrix\Main\Loader::includeModule('iblock');
 
-$iblockId = 19;
-$iblockElementId = 41;
+$medics = \Bitrix\Iblock\Elements\ElementDoctorTable::getList([
+    'select' => ['ID', 'NAME', 'FAMILIYA', 'IMYA', 'OTCHESTVO', 'PROTSEDURA'],
+])->fetchCollection();
 
-// Old API 
-$arFilter = ['IBLOCK_ID' => $iblockId, 'ACTIVE' => 'Y'];
-$arSelect = ['ID', 'NAME', 'CODE', 'PROPERTY_MODEL', 'PROPERTY_MANUFACTURER_ID'];
-$res = CIBlockElement::GetList([], $arFilter, false, [], $arSelect);
-$items = [];
-while($arFields = $res->fetch()){
-    // pr($arFields);
-    $items[] = $arFields;
+foreach ($medics as $medic) {
+    $familiya = $medic->getFamiliya();
+
+    pr('NAME - '.$medic->getName()
+        .' Фамилия - '.$medic->getFamiliya()->getValue()
+        .' Имя - '.$medic->getImya()->getValue()
+        .' Отчество - '.$medic->getOtchestvo()->getValue()
+        //.' Процедура - '.$medic->getProtsedura()->getValue()
+    );
+
 }
-pr($items);
 
-$cars = CarsTable::getList([       
-		'select'=>[
-          'ID'=>'IBLOCK_ELEMENT_ID',
-          'NAME'=>'ELEMENT.NAME',
- 		  'MANUFACTURER_ID'=>'MANUFACTURER_ID',
-      ]
-  ])->fetchAll();
-
- pr($cars); 
