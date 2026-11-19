@@ -39,7 +39,7 @@ class Log extends FileExceptionHandlerLog
         $_message .= "---";
         $_message .= "\n";
 
-        if ($clear)
+        if ($clear) 
         {
             file_put_contents($logFile, $_message);
         }

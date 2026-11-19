@@ -6,8 +6,9 @@
 
 
 
-
 ## Учебный портал:
+https://cl816964.tw1.ru/stream/
 
-https://cr510686.tw1.ru/stream/
 
+## Домашние задания:
+https://cl816964.tw1.ru/homeworks/
